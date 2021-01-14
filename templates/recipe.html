@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if recipe  %}
+
+<h4>{{recipe.title}}</h4>
+<hr>
+Author: {{recipe.author}}
+<hr>
+Date: {{recipe.created_date}}
+<hr>
+{{recipe.content|safe}}
+{% else %}
+
+<div class = "alert alert-warning">There is no such a recipe</div>
+
+{% endif %}
+
+{% endblock body %}
+

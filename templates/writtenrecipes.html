@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>There are some nice recipes here</h3>
+<hr>
+
+{% if recipes %}
+<form action="/search" method = "post">
+    <input type="text" name = "keyword" class=" input-sm" maxlength="64" placeholder="Search">
+<button type="submit" class="btn btn-danger ">Search</button>
+</form>
+<hr>
+
+<ul class="list-group">
+    {% for recipe in recipes  %}
+    <li class = "list-group-item"><a href="/recipe/{{recipe.id}}">{{recipe.title}}</a></li>
+    
+    {% endfor %}
+</ul>
+
+{% else %}
+<div class = "alert alert-danger"> There are no recipes here :( </div>
+{% endif %}
+
+{% endblock body %}

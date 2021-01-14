@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h3>Update a recipe</h3>
+<hr>
+
+{% from "includes/formhelpers.html" import render_field %}
+
+<form method = "post">
+    {{ render_field(form.title, class = "form-control") }}
+    {{ render_field(form.recipe, class = "form-control") }}
+    
+    <button type="submit" class="btn btn-danger">Update your recipe </button>
+
+</form>
+
+
+{% endblock body %}

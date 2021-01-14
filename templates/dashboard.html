@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+
+{% block body   %}
+
+<h3> You can add recipes here!</h3>
+<hr>
+<small>Welcome, {{session["username"]}}</small>
+<hr>
+
+<a href="/addrecipe" class = "btn btn-danger"> Add a recipe</a>
+
+{% if recipes %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Date</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for recipe in recipes  %}
+        <tr>
+        <th scope="row">{{recipe.id}}</th>
+        <td><a href="/recipe/{{recipe.id}}">{{recipe.title}}</a></td>
+        <td>{{recipe.author}}</td>
+        <td>{{recipe.created_date}}</td>
+        <td><a href="/edit/{{recipe.id}}" class = "btn btn-danger">Update</a></td>
+        <td><a href="/delete/{{recipe.id}}" class = "btn btn-danger">Delete</a></td>
+      </tr>
+
+        
+        {% endfor %}
+     
+      <!--tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+{% else %}
+<div class = "alert alert-danger"> You have no recipes here :(</div>
+{% endif %}
+
+{% endblock  %}
+
+
+    
+
